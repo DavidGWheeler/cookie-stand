@@ -112,4 +112,3 @@ var alki = {
 alki.hourlySoldAvg();
 console.log(alki.custVolEst());
 console.log(alki.hourlySoldAvg());
-

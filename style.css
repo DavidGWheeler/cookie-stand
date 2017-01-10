@@ -7,8 +7,12 @@
 }
 
 .logo, h1 {
+  text-shadow: 4px;
+  text-align: center;
   font-family: 'Arima Madurai', cursive;
-  padding: 50px;
+  font-size: 1.5em;
+  color: white;
+  padding: 45px;
 }
 
 .outPut, p {
@@ -22,5 +26,5 @@ ul {
 }
 
 body {
-  background-color: light-grey;
+  background-color: #9AA899;
 }
