@@ -1,6 +1,6 @@
 'use strict';
 
-var opHours = [6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
+var opHours = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pmam','8pm'];
 
 var firstAndPike = {
   locationName: '1st & Pike',
@@ -13,7 +13,7 @@ var firstAndPike = {
   },
   hourlySoldAvg: function() {
     for (var i = 0; i < opHours.length; i++) {
-      this.dailyCookies.push(this.custVolEst() * this.avgPerSale);
+      this.dailyCookies.push(Math.floor(this.custVolEst() * this.avgPerSale));
     }
     console.log(this.dailyCookies);
     return this.dailyCookies;
@@ -35,7 +35,7 @@ var seaTacAirport = {
   },
   hourlySoldAvg: function() {
     for (var i = 0; i < opHours.length; i++) {
-      this.dailyCookies.push(this.custVolEst() * this.avgPerSale);
+      this.dailyCookies.push(Math.floor(this.custVolEst() * this.avgPerSale));
     }
     console.log(this.dailyCookies);
     return this.dailyCookies;
@@ -58,7 +58,7 @@ var seaCent = {
   },
   hourlySoldAvg: function() {
     for (var i = 0; i < opHours.length; i++) {
-      this.dailyCookies.push(this.custVolEst() * this.avgPerSale);
+      this.dailyCookies.push(Math.floor(this.custVolEst() * this.avgPerSale));
     }
     console.log(this.dailyCookies);
     return this.dailyCookies;
@@ -79,7 +79,7 @@ var capHill = {
   },
   hourlySoldAvg: function() {
     for (var i = 0; i < opHours.length; i++) {
-      this.dailyCookies.push(this.custVolEst() * this.avgPerSale);
+      this.dailyCookies.push(Math.floor(this.custVolEst() * this.avgPerSale));
     }
     console.log(this.dailyCookies);
     return this.dailyCookies;
@@ -100,7 +100,7 @@ var alki = {
   },
   hourlySoldAvg: function() {
     for (var i = 0; i < opHours.length; i++) {
-      this.dailyCookies.push(this.custVolEst() * this.avgPerSale);
+      this.dailyCookies.push(Math.floor(this.custVolEst() * this.avgPerSale));
     }
     console.log(this.dailyCookies);
     return this.dailyCookies;
