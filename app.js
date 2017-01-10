@@ -21,43 +21,92 @@ var firstAndPike = {
 };
 
 firstAndPike.hourlySoldAvg();
-//console.log(firstAndPike.custVolEst());
-//console.log(firstAndPike.hourlySoldAvg());
+console.log(firstAndPike.custVolEst());
+console.log(firstAndPike.hourlySoldAvg());
 
-// var seaTacAirport = {
-//   locationName: 'SeaTac Airport',
-//   minCust: 3,
-//   maxCust: 24,
-//   avgPerSale: 1.2,
-//   custVolEst: function() {
-//     return (Math.floor(Math.random() * (this.maxCust - this.minCust) + this.minCust));
-//   }
-// };
-//
-// var seaCent = {
-//   locationName: 'Seattle Center',
-//   minCust: 11,
-//   maxCust: 38,
-//   avgPerSale: 1.7,
-//   custVolEst: function() {
-//     return (Math.floor(Math.random() * (this.maxCust - this.minCust) + this.minCust));
-//   }
-// };
-//
-// var capHill = {
-//   locationName: 'Capitol Hill',
-//   minCust: 20,
-//   maxCust: 38,
-//   avgPerSale: 2.3,
-//   custVolEst: function() {
-//     return (Math.floor(Math.random() * (this.maxCust - this.minCust) + this.minCust));
-//   }
-// };
-//
-// var alki = {
-//   locationName: 'Alki',
-//   minCust: 2,
-//   maxCust: 16,
-//   avgPerSale: 4.6,
-//   custVolEst: function() {
-//     return (Math.floor(Math.random() * (this.maxCust - this.minCust) + this.minCust));
+var seaTacAirport = {
+  locationName: 'SeaTac Airport',
+  minCust: 3,
+  maxCust: 24,
+  avgPerSale: 1.2,
+  dailyCookies: [],
+  custVolEst: function() {
+    return (Math.floor(Math.random() * (this.maxCust - this.minCust) + this.minCust));
+  },
+  hourlySoldAvg: function() {
+    for (var i = 0; i < opHours.length; i++) {
+      this.dailyCookies.push(this.custVolEst() * this.avgPerSale);
+    }
+    console.log(this.dailyCookies);
+    return this.dailyCookies;
+  }
+};
+
+seaTacAirport.hourlySoldAvg();
+console.log(seaTacAirport.custVolEst());
+console.log(seaTacAirport.dailyCookies());
+
+
+var seaCent = {
+  locationName: 'Seattle Center',
+  minCust: 11,
+  maxCust: 38,
+  avgPerSale: 1.7,
+  dailyCookies: [],
+  custVolEst: function() {
+    return (Math.floor(Math.random() * (this.maxCust - this.minCust) + this.minCust));
+  },
+  hourlySoldAvg: function() {
+    for (var i = 0; i < opHours.length; i++) {
+      this.dailyCookies.push(this.custVolEst() * this.avgPerSale);
+    }
+    console.log(this.dailyCookies);
+    return this.dailyCookies;
+  }
+};
+
+seaCent.hourlySoldAvg();
+console.log(seaCent.custVolEst());
+console.log(seaCent.dailyCookies());
+
+var capHill = {
+  locationName: 'Capitol Hill',
+  minCust: 20,
+  maxCust: 38,
+  dailyCookies: [],
+  custVolEst: function() {
+    return (Math.floor(Math.random() * (this.maxCust - this.minCust) + this.minCust));
+  },
+  hourlySoldAvg: function() {
+    for (var i = 0; i < opHours.length; i++) {
+      this.dailyCookies.push(this.custVolEst() * this.avgPerSale);
+    }
+    console.log(this.dailyCookies);
+    return this.dailyCookies;
+  }
+};
+
+capHill.hourlySoldAvg();
+console.log(capHill.custVolEst());
+console.log(capHill.dailyCookies());
+
+var alki = {
+  locationName: 'Alki',
+  minCust: 2,
+  maxCust: 16,
+  dailyCookies: [],
+  custVolEst: function() {
+    return (Math.floor(Math.random() * (this.maxCust - this.minCust) + this.minCust));
+  },
+  hourlySoldAvg: function() {
+    for (var i = 0; i < opHours.length; i++) {
+      this.dailyCookies.push(this.custVolEst() * this.avgPerSale);
+    }
+    console.log(this.dailyCookies);
+    return this.dailyCookies;
+  }
+};
+
+alki.hourlySoldAvg();
+console.log(alki.custVolEst());
+console.log(alki.dailyCookies());
