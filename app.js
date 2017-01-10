@@ -44,7 +44,7 @@ var seaTacAirport = {
 
 seaTacAirport.hourlySoldAvg();
 console.log(seaTacAirport.custVolEst());
-console.log(seaTacAirport.dailyCookies());
+console.log(seaTacAirport.hourlySoldAvg());
 
 
 var seaCent = {
@@ -67,12 +67,13 @@ var seaCent = {
 
 seaCent.hourlySoldAvg();
 console.log(seaCent.custVolEst());
-console.log(seaCent.dailyCookies());
+console.log(seaCent.hourlySoldAvg());
 
 var capHill = {
   locationName: 'Capitol Hill',
   minCust: 20,
   maxCust: 38,
+  avgPerSale: 1.7,
   dailyCookies: [],
   custVolEst: function() {
     return (Math.floor(Math.random() * (this.maxCust - this.minCust) + this.minCust));
@@ -88,12 +89,13 @@ var capHill = {
 
 capHill.hourlySoldAvg();
 console.log(capHill.custVolEst());
-console.log(capHill.dailyCookies());
+console.log(capHill.hourlySoldAvg());
 
 var alki = {
   locationName: 'Alki',
   minCust: 2,
   maxCust: 16,
+  avgPerSale: 1.7,
   dailyCookies: [],
   custVolEst: function() {
     return (Math.floor(Math.random() * (this.maxCust - this.minCust) + this.minCust));
@@ -109,4 +111,5 @@ var alki = {
 
 alki.hourlySoldAvg();
 console.log(alki.custVolEst());
-console.log(alki.dailyCookies());
+console.log(alki.hourlySoldAvg());
+

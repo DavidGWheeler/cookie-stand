@@ -20,3 +20,7 @@ ul {
   font-family: 'Verdana';
   font-size: 1.1em;
 }
+
+body {
+  background-color: light-grey;
+}
