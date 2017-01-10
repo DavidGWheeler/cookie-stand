@@ -1,5 +1,6 @@
 .logo {
-  background-image: url("salmon.jpg");
+  background-image: url("salmon.png");
+  margin: 25px;
   background-repeat: no-repeat;
   background-position: center;
   background-color: light-gray;
@@ -7,9 +8,15 @@
 
 .logo, h1 {
   font-family: 'Arima Madurai', cursive;
+  padding: 50px;
 }
 
 .outPut, p {
   font-family: 'Trirong', serif;
   font-size: 1.25em;
   }
+
+ul {
+  font-family: 'Trirong', serif;
+  font-size: 1.1em;
+}

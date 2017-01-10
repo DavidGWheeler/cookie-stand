@@ -7,56 +7,57 @@ var firstAndPike = {
   minCust: 23,
   maxCust: 65,
   avgPerSale: 6.3,
-  custVolEst: function getRandom() {
-    return (Math.random() * (this.maxCust - this.minCust) + this.minCust);
-  }
-  for (var i = 0; i < opHours.length; i++) {
-    var hourlyAvg = ();
-    var dailyAvg = ();
-    console.log(i);
-    return hourlyAvg();
-    console.log(hourlyAvg);
-    return dailyAvg();
-    console.log(dailyAvg);
-  }
-};
-
-var seaTacAirport = {
-  locationName: 'SeaTac Airport',
-  minCust: 3,
-  maxCust: 24,
-  avgPerSale: 1.2,
-  custVolEst: function getRandom() {
-    return (Math.random() * (this.maxCust - this.minCust) + this.minCust);
+  dailyCookies: [],
+  custVolEst: function() {
+    return (Math.floor(Math.random() * (this.maxCust - this.minCust) + this.minCust));
+  },
+  hourlySoldAvg: function() {
+    for (var i = 0; i < opHours.length; i++) {
+      this.dailyCookies.push(this.custVolEst() * this.avgPerSale);
+    }
+    console.log(this.dailyCookies);
+    return this.dailyCookies;
   }
 };
 
-var seaCent = {
-  locationName: 'Seattle Center',
-  minCust: 11,
-  maxCust: 38,
-  avgPerSale: 1.7,
-  custVolEst: function getRandom() {
-    return (Math.random() * (this.maxCust - this.minCust) + this.minCust);
-  }
-};
+firstAndPike.hourlySoldAvg();
+//console.log(firstAndPike.custVolEst());
+//console.log(firstAndPike.hourlySoldAvg());
 
-var capHill = {
-  locationName: 'Capitol Hill',
-  minCust: 20,
-  maxCust: 38,
-  avgPerSale: 2.3,
-  custVolEst: function getRandom() {
-    return (Math.random() * (this.maxCust - this.minCust) + this.minCust);
-  }
-};
-
-var alki = {
-  locationName: 'Alki',
-  minCust: 2,
-  maxCust: 16,
-  avgPerSale: 4.6,
-  custVolEst: function getRandom() {
-    return (Math.random() * (this.maxCust - this.minCust) + this.minCust);
-  }
-};
+// var seaTacAirport = {
+//   locationName: 'SeaTac Airport',
+//   minCust: 3,
+//   maxCust: 24,
+//   avgPerSale: 1.2,
+//   custVolEst: function() {
+//     return (Math.floor(Math.random() * (this.maxCust - this.minCust) + this.minCust));
+//   }
+// };
+//
+// var seaCent = {
+//   locationName: 'Seattle Center',
+//   minCust: 11,
+//   maxCust: 38,
+//   avgPerSale: 1.7,
+//   custVolEst: function() {
+//     return (Math.floor(Math.random() * (this.maxCust - this.minCust) + this.minCust));
+//   }
+// };
+//
+// var capHill = {
+//   locationName: 'Capitol Hill',
+//   minCust: 20,
+//   maxCust: 38,
+//   avgPerSale: 2.3,
+//   custVolEst: function() {
+//     return (Math.floor(Math.random() * (this.maxCust - this.minCust) + this.minCust));
+//   }
+// };
+//
+// var alki = {
+//   locationName: 'Alki',
+//   minCust: 2,
+//   maxCust: 16,
+//   avgPerSale: 4.6,
+//   custVolEst: function() {
+//     return (Math.floor(Math.random() * (this.maxCust - this.minCust) + this.minCust));
