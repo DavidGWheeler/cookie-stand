@@ -1,0 +1,15 @@
+.logo {
+  background-image: url("salmon.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: light-gray;
+}
+
+.logo, h1 {
+  font-family: 'Arima Madurai', cursive;
+}
+
+.outPut, p {
+  font-family: 'Trirong', serif;
+  font-size: 1.25em;
+  }
