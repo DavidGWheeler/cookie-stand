@@ -27,3 +27,25 @@ ul {
 body {
   background-color: #9AA899;
 }
+
+.location-data {
+  background-color: white;
+  border: 1px solid black;
+  float: left;
+  clear: right;
+  text-align: center;
+}
+
+.location-data,p {
+  font-family: serif;
+  text-decoration: underline;
+  text-align: justify;
+}
+
+.for-sale {
+  border: 2px solid black;
+  clear: left;
+  text-decoration: underline;
+  font-family: sans-serif;
+  text-align: justify;
+}
