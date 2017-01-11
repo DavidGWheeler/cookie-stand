@@ -14,41 +14,46 @@ function CookieStore (locationName, minCust, maxCust, avgPerSale, opHours, hourl
 }
 
 var firstAndPike = new CookieStore('First and Pike', 23, 65, 6.3, ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'], []);
+var seaTacAirport = new CookieStore('SeaTac Airport', 3, 24, 1.2, ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'], []);
+var seaCent = new CookieStore('Seattle Center', 11, 38, 1.7, ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'], []);
 
 
-  function HourlySoldAvg(){
-    this.hourlyCookies = [];
-    for (var i = 0; i < this.opHours.length; i++) {
-      this.hourlyCookies.push(Math.round(this.hourlyCustVolEst() * this.avgPerSale));
-      console.log(i + ': = hourlySoldAvg loop');
-    }
-    return this.hourlyCookies;
-  };
+CookieStore.prototype.hourlySoldAvg = function(){
+  this.hourlyCookies = [];
+  for (var i = 0; i < this.opHours.length; i++) {
+    this.hourlyCookies.push(Math.round(this.hourlyCustVolEst() * this.avgPerSale));
+    console.log(i + ': = hourlySoldAvg loop');
+  }
+  return this.hourlyCookies;
+};
 
 //Calculate hourly cookies sold and populate hourlyCookies for the object.
-  function HourlyCookies (hourlyCookies){
-    var runningTotal = 0;
-    for (var i = 0; i < this.hourlyCookies.length; i++) {
-      runningTotal = this.hourlyCookies[i] + runningTotal;
-      console.log(runningTotal + ': = dailyCookies sold loop');
-    }
-    console.log(runningTotal + ': = dailyCookiesTotal');
-    return runningTotal;
-  };
+CookieStore.prototype.hourlyCookies = function(){
+  this.runningTotal = 0;
+  for (var i = 0; i < this.hourlyCookies.length; i++) {
+    runningTotal = this.hourlyCookies[i] + runningTotal;
+    console.log(this.runningTotal + ': = dailyCookies sold loop');
+  }
+  console.log(runningTotal + ': = dailyCookiesTotal');
+  return runningTotal;
+};
 
 //Write hourlyCookies sales to the DOM
-  function HourlySalesWrite(hourlySalesWrite) {
-    var todaySold = document.getElementById('sales-list');
-    for (var i = 0; i < this.hourlyCookies.length; i++){
-      var rowEl = document.createElement('li');
-      rowEl.textContent = this.opHours[i] + ': ' + this.hourlyCookies[i] + 'cookies.';
-      todaySold.appendChild(rowEl);
-    }
-    var dailySalesWrite = document.createElement('li');
-    dailySalesWrite.textContent = 'Total: ' + this.dailyCookiesTotal();
-    todaySold.appendChild(dailySalesWrite);
-  };
+CookieStore.prototype.hourlySalesWrite = function() {
+  var todaySold = document.getElementById('sales-list');
+  for (var i = 0; i < this.hourlyCookies.length; i++){
+    var rowEl = document.createElement('li');
+    rowEl.textContent = this.opHours[i] + ': ' + this.hourlyCookies[i] + 'cookies.';
+    todaySold.appendChild(rowEl);
 };
+
+//Write daily cookie sales to the DOM
+CookieStore.prototype.dailySalesWrite = function(){
+  document.createElement('li');
+  dailySalesWrite.textContent = 'Total: ' + this.dailyCookiesTotal();
+  todaySold.appendChild(this.dailySalesWrite);
+};
+
 
 
 // //get my hourlySoldAvg and write to the DOM
