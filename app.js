@@ -1,6 +1,7 @@
 'use strict';
 
-function CookieStore (locationName, minCust, maxCust, avgPerSale, opHours, hourlyCookies) {
+//constructor builds out a store with a location name and min/max customers per hour.
+function CookieStore (locationName, minCust, maxCust, avgPerSale, opHours, hourlyCookies){
   this.locationName = locationName;
   this.minCust = minCust;
   this.maxCust = maxCust;
@@ -9,17 +10,23 @@ function CookieStore (locationName, minCust, maxCust, avgPerSale, opHours, hourl
   this.hourlyCookies = hourlyCookies;
   this.hourlyCustVolEst = function(){
     return (Math.round(Math.random() * (this.maxCust - this.minCust) + this.minCust));
-  },
-  this.hourlySoldAvg = function(){
+  };
+}
+
+var firstAndPike = new CookieStore('First and Pike', 23, 65, 6.3, ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'], []);
+
+
+  function HourlySoldAvg(){
     this.hourlyCookies = [];
     for (var i = 0; i < this.opHours.length; i++) {
       this.hourlyCookies.push(Math.round(this.hourlyCustVolEst() * this.avgPerSale));
       console.log(i + ': = hourlySoldAvg loop');
-      }
-      return this.hourlyCookies;
-    };
-  }
-  this.dailyCookiesTotal = function(){
+    }
+    return this.hourlyCookies;
+  };
+
+//Calculate hourly cookies sold and populate hourlyCookies for the object.
+  function HourlyCookies (hourlyCookies){
     var runningTotal = 0;
     for (var i = 0; i < this.hourlyCookies.length; i++) {
       runningTotal = this.hourlyCookies[i] + runningTotal;
@@ -27,8 +34,10 @@ function CookieStore (locationName, minCust, maxCust, avgPerSale, opHours, hourl
     }
     console.log(runningTotal + ': = dailyCookiesTotal');
     return runningTotal;
-  },
-  this.hourlySalesWrite = function(){
+  };
+
+//Write hourlyCookies sales to the DOM
+  function HourlySalesWrite(hourlySalesWrite) {
     var todaySold = document.getElementById('sales-list');
     for (var i = 0; i < this.hourlyCookies.length; i++){
       var rowEl = document.createElement('li');
@@ -38,8 +47,9 @@ function CookieStore (locationName, minCust, maxCust, avgPerSale, opHours, hourl
     var dailySalesWrite = document.createElement('li');
     dailySalesWrite.textContent = 'Total: ' + this.dailyCookiesTotal();
     todaySold.appendChild(dailySalesWrite);
-  },
+  };
 };
+
 
 // //get my hourlySoldAvg and write to the DOM
 // firstAndPike.hourlySoldAvg();
