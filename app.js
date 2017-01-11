@@ -1,7 +1,5 @@
 'use strict';
 
-//var opHours = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'];
-
 var firstAndPike = {
   locationName: '1st & Pike',
 //customer attribuites
@@ -18,6 +16,7 @@ var firstAndPike = {
   },
 
   hourlySoldAvg: function() {
+    this.hourlyCookies = [];
     for (var i = 0; i < this.opHours.length; i++) {
       this.hourlyCookies.push(Math.round(this.hourlyCustVolEst() * this.avgPerSale));
       console.log(i + ': = hourlySoldAvg loop');
@@ -36,41 +35,23 @@ var firstAndPike = {
     console.log(runningTotal + ': = dailyCookiesTotal');
     return runningTotal;
   },
-  tabelEl: function(){
+  hourlySalesWrite: function(){
+    var todaySold = document.getElementById('sales-list');
     for (var i = 0; i < this.hourlyCookies.length; i++){
-    var rowData = this.hourlyCookies[i];
-
-    var rowEl = document.createElement('tr');
-
-    for (var j = 0; j < rowData.length; j++){
-      
+      var rowEl = document.createElement('li');
+      rowEl.textContent = this.opHours[i] + ': ' + this.hourlyCookies[i] + 'cookies.';
+      todaySold.appendChild(rowEl);
     }
+    var dailySalesWrite = document.createElement('li');
+    dailySalesWrite.textContent = 'Total: ' + this.dailyCookiesTotal();
+    todaySold.appendChild(dailySalesWrite);
   }
 };
 
-// for(var i = 0; i < tableData,length; i++){
-// 	var rowData = tableData[i];
-//
-// 	var rowEl = document.createElement('tr');
-//
-// 	for(var j = 0; j < rowData.length; j++){
-// 		var content = rowData[j];
-//
-// 		var dataEl = document.createElement('td');
-// 		dataEl.textContent = content;
-// 		rowEl.appendChile(dataEl);
-//     }
-//
-// 	tableEl.appendChild(rowEL);
-// }
-
-//get and log my hourlySoldAvg
+//get my hourlySoldAvg and write to the DOM
 firstAndPike.hourlySoldAvg();
-console.log(firstAndPike.hourlySoldAvg() + ': = hourly sold average for firstAndPike');
-
-//get and log my daily total
 firstAndPike.dailyCookiesTotal();
-console.log(firstAndPike.dailyCookiesTotal());
+firstAndPike.hourlySalesWrite();
 
 
 // var seaTacAirport = {
