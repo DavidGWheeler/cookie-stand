@@ -12,9 +12,12 @@
           <label for="locationName">Store Name:</label>
           <input name="locationName" id="loc-name-input" type="text"/>
           <label for="min-cust">Minimum Customers Per Hour:</label>
-          <input name="min-cust" id="min-cust-input" type="text"/>
+          <input name="min-cust-input" id="min-cust" type="number" step=0./>
           <label for="max-cust">Maximum Customers Per Hour:</label>
-          <input name="max-cust" id="max-cust-input" type="text"/>
+          <input name="max-cust-input" id="max-cust" type="number" step="0."/>
+          <label for="avg-per-sale">Average Cookies Per Customer:</label>
+          <input name="avg-per-sale" id="max-cust" type="number" step="0.01"/>
+          <button name="submit-store-data" type="submit">Build It!</button>
         </fieldset>
       </form>
     </section>

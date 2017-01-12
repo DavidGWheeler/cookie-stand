@@ -59,6 +59,18 @@ var seaCent = new CookieStore('Seattle Center', 11, 38, 1.7, ['6am','7am','8am',
 var capHill = new CookieStore('Capitol Hill', 21, 38, 1.7,['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm']);
 var alki = new CookieStore('Alki', 21, 38, 1.7,['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm']);
 
+//takes three params, string function, bool true = bubble.
+var formEl = document.getElementById('make-store');
+
+formEl.addEventListener('submit', function(event){
+  event.preventDefault();
+  event.stopPropagation();
+
+  renderUsername(event.target.username.value);
+
+//to handle old browsers we are setting this to false.  This is default behavior for newer browsers
+},false);
+
 var constructorArray = [firstAndPike, seaTacAirport, seaCent, capHill, alki];
 
 salesTable(constructorArray);
