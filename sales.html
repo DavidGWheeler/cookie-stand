@@ -5,8 +5,23 @@
       <link rel="stylesheet" type="text/css" href="style.css"/>
     </head>
   <body>
-    <table id="sales-list">
-    </table>
+    <section>
+      <form id="make-store">
+        <fieldset>
+          <legend>New Store Maker</legend>
+          <label for="locationName">Store Name:</label>
+          <input name="locationName" id="loc-name-input" type="text"/>
+          <label for="min-cust">Minimum Customers Per Hour:</label>
+          <input name="min-cust" id="min-cust-input" type="text"/>
+          <label for="max-cust">Maximum Customers Per Hour:</label>
+          <input name="max-cust" id="max-cust-input" type="text"/>
+        </fieldset>
+      </form>
+    </section>
+    <section id="table-section">
+      <table id="sales-list">
+      </table>
+    </section>
     <script src="app.js"></script>
   </body>
 

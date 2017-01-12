@@ -51,3 +51,37 @@ body {
   text-align: justify;
   color: green;
 }
+
+.sales-table, table {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+  border-collapse: collapse;
+  height: 10px;
+}
+
+tr {
+  border: 1px solid black;
+  border-collapse: collapse;
+  margin: 1px black;
+}
+
+th {
+  height: 15px;
+  border: 1px solid black;
+  border-collapse: collapse;
+  margin: 1px;
+}
+
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  margin: 4px black;
+}
+
+.table-section {
+  overflow-x:auto
+
+}

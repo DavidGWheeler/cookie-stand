@@ -35,7 +35,7 @@ CookieStore.prototype.hourlyCookies = function(){
 };
 
 // creates a table using object data
-function SalesTable(object){
+function salesTable(object){
   var tableEl = document.getElementById('sales-list');
   for(var i = 0; i < object.length; i++){
     var tableRow = document.createElement('tr');
@@ -61,7 +61,7 @@ var alki = new CookieStore('Alki', 21, 38, 1.7,['6am','7am','8am','9am','10am','
 
 var constructorArray = [firstAndPike, seaTacAirport, seaCent, capHill, alki];
 
-SalesTable(constructorArray);
+salesTable(constructorArray);
 
 // //Write hourlyCookies sales to the DOM
 // CookieStore.prototype.hourlySalesWrite = function() {
