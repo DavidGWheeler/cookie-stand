@@ -1,13 +1,16 @@
 'use strict';
 
+var hours = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'];
+console.log(hours);
 //constructor builds out a store with a location name and min/max customers per hour.
-function CookieStore (locationName, minCust, maxCust, avgPerSale, opHours, sold){
+function CookieStore (locationName, minCust, maxCust, avgPerSale, opHours){
   this.locationName = locationName;
   this.minCust = minCust;
   this.maxCust = maxCust;
   this.avgPerSale = avgPerSale;
   this.opHours = opHours;
-  this.sold = sold;
+  this.hourlyCookiesArray = [];
+  this.sold = 0;
 }
 
 CookieStore.prototype.hourlyCustVolEst = function(){
@@ -16,61 +19,82 @@ CookieStore.prototype.hourlyCustVolEst = function(){
 
 //calculate the average number of cookies sold per hour and return hourlyCookies
 CookieStore.prototype.hourlySoldAvg = function(){
-  var hourlyCookies = [];
+
   for (var i = 0; i < this.opHours.length; i++) {
-    hourlyCookies.push(Math.round(this.hourlyCustVolEst() * this.avgPerSale));
+    this.hourlyCookiesArray.push(Math.round(this.hourlyCustVolEst() * this.avgPerSale));
     // console.log(i + ': = hourlySoldAvg loop');
   }
-  return hourlyCookies;
+  return this.hourlyCookiesArray;
 };
 
 //Calculate hourly cookies sold and populate hourlyCookies for the object.
-//Todo: change the name of hourlyCookies
 CookieStore.prototype.hourlyCookies = function(){
   var runningTotal = 0;
   for (var i = 0; i < this.hourlyCookies.length; i++) {
     runningTotal = this.hourlyCookies[i] + runningTotal;
     // console.log(runningTotal + ': = hourlyCookies sold loop');
   }
-  // console.log(runningTotal + ': = hourlyCookiesTotal');
+  console.log(runningTotal + ': = hourlyCookiesTotal');
   return runningTotal;
 };
 
 CookieStore.prototype.dailyCookies = function(){
   var runningDTotal = 0;
-  for (var i = 0; i < this.hourlyCookies.length; i++) {
-    runningDTotal = this.hourlyCookies[i] + runningDTotal;
-    console.log(runningDTotal + ': = dailyCookiesTotal sold loop');
+  for (var i = 0; i < this.hourlyCookiesArray.length; i++) {
+    runningDTotal = this.hourlyCookiesArray[i] + runningDTotal;
+    // console.log(runningDTotal + ': = dailyCookiesTotal sold loop');
   }
+  this.sold = runningDTotal;
   console.log(runningDTotal + ': = dailyCookiesTotal');
   return runningDTotal;
 };
 
 // creates a table using object data
 function salesTable(object){
+//head column with store names
   var tableEl = document.getElementById('sales-list');
   for(var i = 0; i < object.length; i++){
     var tableRow = document.createElement('tr');
     tableRow.textContent = object[i].locationName;
     console.log(object[i].locationName);
-    console.log(object);
-
-    var hourlyCookies = object[i].hourlySoldAvg();
-    for(var j = 0; j < object[i].hourlySoldAvg().length; j++){
+//table data for my rows
+    object[i].hourlySoldAvg();
+    object[i].dailyCookies();
+    for(var j = 0; j < object[i].hourlyCookiesArray.length; j++){
       var tableData = document.createElement('td');
-      tableData.textContent = hourlyCookies[j];
+      tableData.textContent = object[i].hourlyCookiesArray[j];
       tableRow.appendChild(tableData);
-
-      var dailyCookies = object[i].dailyCookies();
-      for (var k = 0; k < obect[i].dailyCookies().length; i++) {
-        var tableFoot = document.createElement('tfoot');
-        tableFoot.textContent = dailyCookies[k];
-        tableRow.appendChild(tableFoot);
-      }
     }
+//totals to the table footer.
+    var dailySoldVariable = object[i].sold;
+    var tableFoot = document.createElement('tfoot');
+    tableFoot.textContent = dailySoldVariable;
+    tableRow.appendChild(tableFoot);
     tableEl.appendChild(tableRow);
   }
 }
+
+//write hours to the top rows
+function row1El(){
+  var tableEl = document.getElementById('sales-list');
+  var tableRow1El = document.createElement('tr');
+  var nameLableEl = document.createElement('td');
+  nameLableEl.textContent = 'Location Name';
+  tableRow1El.appendChild(nameLableEl);
+  for (var i = 0; i < hours.length; i++) {
+    var tableRow1Data = document.createElement('td');
+    tableRow1Data.textContent = hours[i];
+    tableRow1El.appendChild(tableRow1Data);
+  }
+  var storeTotEl = document.createElement('td');
+  storeTotEl.textContent = 'Totals';
+  tableRow1El.appendChild(storeTotEl);
+  tableEl.appendChild(tableRow1El);
+};
+
+//todo: write totals per hour to the bottom rows
+
+//todo: write "Hourly Totals" to first column last row
 
 var firstAndPike = new CookieStore('First and Pike', 23, 65, 6.3, ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm']);
 var seaTacAirport = new CookieStore('SeaTac Airport', 3, 24, 1.2, ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm']);
@@ -92,7 +116,7 @@ newStoreFormEl.addEventListener('submit', function(event){
   console.log(maxcustinput);
   var avgpersale = parseInt(event.target.avgpersale.value);
   console.log(avgpersale);
-  var newStore = new CookieStore(locationName, mincustinput, maxcustinput, avgpersale, ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm']);
+  var newStore = new CookieStore(locationName, mincustinput, maxcustinput, avgpersale, ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'],[]);
   console.log(newStore);
   constructorArray.push(newStore);
   console.log(constructorArray);
@@ -104,5 +128,5 @@ newStoreFormEl.addEventListener('submit', function(event){
 //I don't like that this is a global variable. todo: make this a part of a constructor.
 var constructorArray = [firstAndPike, seaTacAirport, seaCent, capHill, alki];
 
-//global function  Do I want it to be?
+row1El();
 salesTable(constructorArray);
