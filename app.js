@@ -17,7 +17,7 @@ CookieStore.prototype.hourlySoldAvg = function(){
   var hourlyCookies = [];
   for (var i = 0; i < this.opHours.length; i++) {
     hourlyCookies.push(Math.round(this.hourlyCustVolEst() * this.avgPerSale));
-    console.log(i + ': = hourlySoldAvg loop');
+    // console.log(i + ': = hourlySoldAvg loop');
   }
   return hourlyCookies;
 };
@@ -30,7 +30,7 @@ CookieStore.prototype.hourlyCookies = function(){
     runningTotal = this.hourlyCookies[i] + runningTotal;
     console.log(runningTotal + ': = dailyCookies sold loop');
   }
-  console.log(runningTotal + ': = dailyCookiesTotal');
+  // console.log(runningTotal + ': = dailyCookiesTotal');
   return runningTotal;
 };
 
@@ -40,9 +40,8 @@ function salesTable(object){
   for(var i = 0; i < object.length; i++){
     var tableRow = document.createElement('tr');
     tableRow.textContent = object[i].locationName;
-    console.log(object.locationName);
-    console.log(object);
-    console.log();
+    // console.log(object.locationName);
+    // console.log(object);
     var hourlyCookies = object[i].hourlySoldAvg();
     for(var j = 0; j < object[i].hourlySoldAvg().length; j++){
       var tableData = document.createElement('td');
@@ -60,19 +59,32 @@ var capHill = new CookieStore('Capitol Hill', 21, 38, 1.7,['6am','7am','8am','9a
 var alki = new CookieStore('Alki', 21, 38, 1.7,['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm']);
 
 //takes three params, string function, bool true = bubble.
-var formEl = document.getElementById('make-store');
+var newStoreFormEl = document.getElementById('make-store');
 
-formEl.addEventListener('submit', function(event){
+newStoreFormEl.addEventListener('submit', function(event){
   event.preventDefault();
   event.stopPropagation();
-
-  renderUsername(event.target.username.value);
+  var locationName = (event.target.locationName.value);
+  console.log(locationName);
+  var mincustinput = parseInt(event.target.mincustinput.value);
+  console.log(mincustinput);
+  var maxcustinput = parseInt(event.target.maxcustinput.value);
+  console.log(maxcustinput);
+  var avgpersale = parseInt(event.target.avgpersale.value);
+  console.log(avgpersale);
+  var newStore = new CookieStore(locationName, mincustinput, maxcustinput, avgpersale, ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm']);
+  console.log(newStore);
+  constructorArray.push(newStore);
+  console.log(constructorArray);
+  salesTable([newStore]);
 
 //to handle old browsers we are setting this to false.  This is default behavior for newer browsers
 },false);
 
+//I don't like that this is a global variable. todo: make this a part of a constructor.
 var constructorArray = [firstAndPike, seaTacAirport, seaCent, capHill, alki];
 
+//global function  I don't want it to be
 salesTable(constructorArray);
 
 // //Write hourlyCookies sales to the DOM
