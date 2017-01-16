@@ -80,7 +80,7 @@ function row1El(){
   var tableRow1El = document.createElement('tr');
   var nameLableEl = document.createElement('td');
   nameLableEl.textContent = 'Location Name';
-  tableRow1El.appendChild(nameLableEl);
+  tableRow1El.appendChild(nameLableEl).className = 'location-tag';
   for (var i = 0; i < hours.length; i++) {
     var tableRow1Data = document.createElement('td');
     tableRow1Data.textContent = hours[i];

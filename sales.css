@@ -1,7 +1,21 @@
+.wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 56.250em;
+  margin: 0 auto;
+  padding: 0 0em;
+  box-sizing: border-box;
+}
+
 .table-section, p {
   font-family: 'Trirong', serif;
   font-size: 1.25em;
   }
+
+.location-tag {
+  color: black;
+  background-color: grey;
+}
 
 ul {
   font-family: 'Verdana';

@@ -5,29 +5,31 @@
       <link rel="stylesheet" type="text/css" href="sales.css"/>
       <link href="https://fonts.googleapis.com/css?family=Arima+Madurai|Trirong" rel="stylesheet">
     </head>
-  <body>
-    <section>
-      <form id="make-store">
-        <fieldset>
-          <legend>New Store Maker</legend>
-          <label for="locationName">Store Name:</label>
-          <input name="locationName" id="loc-name-input" type="text" required/>
-          <label for="mincustinput">Minimum Customers Per Hour:</label>
-          <input name="mincustinput" id="min-cust" type="number" step=0. required/>
-          <label for="maxcustinput">Maximum Customers Per Hour:</label>
-          <input name="maxcustinput" id="max-cust" type="number" step="0." required/>
-          <label for="avgpersale">Average Cookies Per Customer:</label>
-          <input name="avgpersale" id="max-cust" type="number" step="1.0" required/>
-          <button name="submit-store-data" type="submit">Build It!</button>
-        </fieldset>
-      </form>
-    </section>
-    <section id="table-section">
-      <caption>Cookie Sales by location</caption>
-      <table id="sales-list">
-      </table>
-    </section>
-    <script src="app.js"></script>
-  </body>
+  <div class="wrapper">
+    <body>
+      <section>
+        <form id="make-store">
+          <fieldset>
+            <legend>New Store Maker</legend>
+            <label for="locationName">Store Name:</label>
+            <input name="locationName" id="loc-name-input" type="text" required/>
+            <label for="mincustinput">Minimum Customers Per Hour:</label>
+            <input name="mincustinput" id="min-cust" type="number" step=0. required/>
+            <label for="maxcustinput">Maximum Customers Per Hour:</label>
+            <input name="maxcustinput" id="max-cust" type="number" step="0." required/>
+            <label for="avgpersale">Average Cookies Per Customer:</label>
+            <input name="avgpersale" id="max-cust" type="number" step="1.0" required/>
+            <button name="submit-store-data" type="submit">Build It!</button>
+          </fieldset>
+        </form>
+      </section>
+      <section id="table-section">
+        <caption>Cookie Sales by location</caption>
+        <table id="sales-list">
+        </table>
+      </section>
+      <script src="app.js"></script>
+    </body>
+  </div>
 
 </html>
