@@ -12,9 +12,13 @@
   font-size: 1.25em;
   }
 
-.location-tag {
+.grey-tag {
   color: black;
   background-color: grey;
+}
+
+tr {
+  width: auto;
 }
 
 ul {
@@ -61,7 +65,7 @@ body {
   color: white;
   border-collapse: collapse;
   height: 10%;
-  width: 50%;
+  width: 100%;
 }
 
 tr {

@@ -80,15 +80,15 @@ function row1El(){
   var tableRow1El = document.createElement('tr');
   var nameLableEl = document.createElement('td');
   nameLableEl.textContent = 'Location Name';
-  tableRow1El.appendChild(nameLableEl).className = 'location-tag';
+  tableRow1El.appendChild(nameLableEl).className = 'grey-tag';
   for (var i = 0; i < hours.length; i++) {
     var tableRow1Data = document.createElement('td');
     tableRow1Data.textContent = hours[i];
-    tableRow1El.appendChild(tableRow1Data);
+    tableRow1El.appendChild(tableRow1Data).className = 'grey-tag';
   }
   var storeTotEl = document.createElement('td');
   storeTotEl.textContent = 'Totals';
-  tableRow1El.appendChild(storeTotEl);
+  tableRow1El.appendChild(storeTotEl).className = 'grey-tag';
   tableEl.appendChild(tableRow1El);
 };
 
