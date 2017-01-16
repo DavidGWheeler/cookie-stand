@@ -37,6 +37,9 @@ var firstAndPike = {
   },
   hourlySalesWrite: function(){
     var todaySold = document.getElementById('sales-list');
+    var locationNameWrite = document.createElement('li');
+    locationNameWrite.textContent = 'Location Name: ' + this.locationName;
+    todaySold.appendChild(locationNameWrite);
     for (var i = 0; i < this.hourlyCookies.length; i++){
       var rowEl = document.createElement('li');
       rowEl.textContent = this.opHours[i] + ': ' + this.hourlyCookies[i] + 'cookies.';
@@ -90,6 +93,9 @@ var seaTacAirport = {
   },
   hourlySalesWrite: function(){
     var todaySold = document.getElementById('sales-list');
+    var locationNameWrite = document.createElement('li');
+    locationNameWrite.textContent = 'Location Name: ' + this.locationName;
+    todaySold.appendChild(locationNameWrite);
     for (var i = 0; i < this.hourlyCookies.length; i++){
       var rowEl = document.createElement('li');
       rowEl.textContent = this.opHours[i] + ': ' + this.hourlyCookies[i] + 'cookies.';
@@ -142,6 +148,9 @@ var seaCent = {
   },
   hourlySalesWrite: function(){
     var todaySold = document.getElementById('sales-list');
+    var locationNameWrite = document.createElement('li');
+    locationNameWrite.textContent = 'Location Name: ' + this.locationName;
+    todaySold.appendChild(locationNameWrite);
     for (var i = 0; i < this.hourlyCookies.length; i++){
       var rowEl = document.createElement('li');
       rowEl.textContent = this.opHours[i] + ': ' + this.hourlyCookies[i] + 'cookies.';
@@ -193,6 +202,9 @@ var capHill = {
   },
   hourlySalesWrite: function(){
     var todaySold = document.getElementById('sales-list');
+    var locationNameWrite = document.createElement('li');
+    locationNameWrite.textContent = 'Location Name: ' + this.locationName;
+    todaySold.appendChild(locationNameWrite);
     for (var i = 0; i < this.hourlyCookies.length; i++){
       var rowEl = document.createElement('li');
       rowEl.textContent = this.opHours[i] + ': ' + this.hourlyCookies[i] + 'cookies.';
@@ -244,6 +256,9 @@ var alki = {
   },
   hourlySalesWrite: function(){
     var todaySold = document.getElementById('sales-list');
+    var locationNameWrite = document.createElement('li');
+    locationNameWrite.textContent = 'Location Name: ' + this.locationName;
+    todaySold.appendChild(locationNameWrite);
     for (var i = 0; i < this.hourlyCookies.length; i++){
       var rowEl = document.createElement('li');
       rowEl.textContent = this.opHours[i] + ': ' + this.hourlyCookies[i] + 'cookies.';
