@@ -1,19 +1,7 @@
-.logo {
-  background-image: url("salmon.png");
-  margin: 5%;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: lightgray;
-  border-radius: 25%;
-}
-
-.logo, h1 {
-  text-align: center;
-  font-family: 'Arima Madurai', cursive;
-  font-size: 1.5em;
-  color: white;
-  padding: 5%;
-}
+.table-section, p {
+  font-family: 'Trirong', serif;
+  font-size: 1.25em;
+  }
 
 ul {
   font-family: 'Verdana';
@@ -34,7 +22,7 @@ body {
 }
 
 .location-data, p {
-  /*display: inline-block;*/
+  display: inline-block;
   font-family: serif;
   text-decoration: underline;
   text-align: justify;
