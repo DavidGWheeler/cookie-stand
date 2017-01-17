@@ -53,10 +53,10 @@ CookieStore.prototype.dailyCookies = function(){
 CookieStore.prototype.totHourlyCookies = function(){
   var runningHourTotal = [];
   //for each store named in the constructorArray.
-  for (var i = 0; i < constructorArray.length; i++) {
+  for (var i = 0; i < this.hourlyCookiesArray.length; i++) {
     console.log(constructorArray[i].locationName + ': = hourlyCookies sold loop');
 //calculate the daily totals, by hour.
-    for (var j = 0; j < this.hourlyCookiesArray.length; j++) {
+    for (var j = 0; j < constructorArray.length; j++) {
       runningHourTotal = constructorArray[i].hourlyCookiesArray[j] + constructorArray[i++].hourlyCookiesArray[j];
       constructorArray[i].soldHourly.push(runningHourTotal);
       console.log(runningHourTotal);
