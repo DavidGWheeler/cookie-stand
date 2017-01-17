@@ -11,7 +11,7 @@ function CookieStore (locationName, minCust, maxCust, avgPerSale, opHours){
   this.opHours = opHours;
   this.hourlyCookiesArray = [];
   this.soldToday = 0;
-  this.totHourlyCookies = [];
+  this.soldHourly = [];
 }
 
 CookieStore.prototype.hourlyCustVolEst = function(){
@@ -39,25 +39,26 @@ CookieStore.prototype.hourlyCookies = function(){
   return runningTotal;
 };
 
-CookieStore.prototype.totHourlyCookies = function(){
-  var runningHourTotal = 0;
-  for (var i = 0; i < this.totHourlyCookies.length; i++) {
-    runningTotal = this.totHourlyCookies[i] + runningTotal;
-    console.log(runningHourTotal + ': = hourlyCookies sold loop');
-  }
-  console.log(runningHourTotal + ': = totHourlyCookiesTotal');
-  return runningHourTotal;
-};
-
 CookieStore.prototype.dailyCookies = function(){
   var runningDTotal = 0;
   for (var i = 0; i < this.hourlyCookiesArray.length; i++) {
     runningDTotal = this.hourlyCookiesArray[i] + runningDTotal;
-    // console.log(runningDTotal + ': = dailyCookiesTotal sold loop');
+    // console.log(runningDxTotal + ': = dailyCookiesTotal sold loop');
   }
   this.soldToday = runningDTotal;
   // console.log(runningDTotal + ': = dailyCookiesTotal');
   return runningDTotal;
+};
+
+CookieStore.prototype.totHourlyCookies = function(){
+  var runningHourTotal = 0;
+  for (var i = 0; i < this.soldHourly.length; i++) {
+    runningHourTotal = this.soldHourlyCookies[i] + runningHourTotal;
+    runningHourTotal = this.soldHourly;
+    console.log(runningHourTotal + ': = hourlyCookies sold loop');
+  }
+  console.log(runningHourTotal + ': = totHourlyCookiesTotal');
+  return runningHourTotal;
 };
 
 // creates a table using object data
