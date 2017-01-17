@@ -10,7 +10,8 @@ function CookieStore (locationName, minCust, maxCust, avgPerSale, opHours){
   this.avgPerSale = avgPerSale;
   this.opHours = opHours;
   this.hourlyCookiesArray = [];
-  this.sold = 0;
+  this.soldToday = 0;
+  this.totHourlyCookies = [];
 }
 
 CookieStore.prototype.hourlyCustVolEst = function(){
@@ -38,14 +39,24 @@ CookieStore.prototype.hourlyCookies = function(){
   return runningTotal;
 };
 
+CookieStore.prototype.totHourlyCookies = function(){
+  var runningHourTotal = 0;
+  for (var i = 0; i < this.totHourlyCookies.length; i++) {
+    runningTotal = this.totHourlyCookies[i] + runningTotal;
+    console.log(runningHourTotal + ': = hourlyCookies sold loop');
+  }
+  console.log(runningHourTotal + ': = totHourlyCookiesTotal');
+  return runningHourTotal;
+};
+
 CookieStore.prototype.dailyCookies = function(){
   var runningDTotal = 0;
   for (var i = 0; i < this.hourlyCookiesArray.length; i++) {
     runningDTotal = this.hourlyCookiesArray[i] + runningDTotal;
     // console.log(runningDTotal + ': = dailyCookiesTotal sold loop');
   }
-  this.sold = runningDTotal;
-  console.log(runningDTotal + ': = dailyCookiesTotal');
+  this.soldToday = runningDTotal;
+  // console.log(runningDTotal + ': = dailyCookiesTotal');
   return runningDTotal;
 };
 
@@ -60,19 +71,21 @@ function salesTable(object){
 //table data for my rows
     object[i].hourlySoldAvg();
     object[i].dailyCookies();
+    object[i].totHourlyCookies();
+    console.log(totHourlyCookies);
     for(var j = 0; j < object[i].hourlyCookiesArray.length; j++){
       var tableData = document.createElement('td');
       tableData.textContent = object[i].hourlyCookiesArray[j];
       tableRow.appendChild(tableData);
     }
 //totals to the table footer.
-    var dailySoldVariable = object[i].sold;
+    var dailySoldVariable = object[i].soldToday;
     var tableFoot = document.createElement('tfoot');
     tableFoot.textContent = dailySoldVariable;
     tableRow.appendChild(tableFoot);
     tableEl.appendChild(tableRow);
   }
-}
+};
 
 //write hours to the top rows
 function row1El(){
@@ -84,17 +97,14 @@ function row1El(){
   for (var i = 0; i < hours.length; i++) {
     var tableRow1Data = document.createElement('td');
     tableRow1Data.textContent = hours[i];
-    tableRow1El.appendChild(tableRow1Data).className = 'grey-tag';
+    tableRow1El.appendChild(tableRow1Data).className = 'grey-tag center';
   }
   var storeTotEl = document.createElement('td');
   storeTotEl.textContent = 'Totals';
-  tableRow1El.appendChild(storeTotEl).className = 'grey-tag';
+  tableRow1El.appendChild(storeTotEl).className = 'grey-tag center';
   tableEl.appendChild(tableRow1El);
 };
 
-//todo: write totals per hour to the bottom rows
-
-//todo: write "Hourly Totals" to first column last row
 
 var firstAndPike = new CookieStore('First and Pike', 23, 65, 6.3, ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm']);
 var seaTacAirport = new CookieStore('SeaTac Airport', 3, 24, 1.2, ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm']);
