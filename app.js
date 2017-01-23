@@ -53,14 +53,16 @@ CookieStore.prototype.dailyCookies = function(){
 CookieStore.prototype.totHourlyCookies = function(){
   var runningHourTotal = [];
   //for each store named in the constructorArray.
-  for (var i = 0; i < this.hourlyCookiesArray.length; i++) {
-    console.log(constructorArray[i].locationName + ': = hourlyCookies sold loop');
+  for (var i = 0; i < constructorArray.length; i++) {
+    console.log(constructorArray[i].locationName + ' ' + this.hourlyCookiesArray[i] + ': = ' + constructorArray[i].opHours[i] + ' hourlyCookies sold loop');
 //calculate the daily totals, by hour.
     for (var j = 0; j < constructorArray.length; j++) {
-      runningHourTotal = constructorArray[i].hourlyCookiesArray[j] + constructorArray[i++].hourlyCookiesArray[j];
+      runningHourTotal = constructorArray[i].hourlyCookiesArray[j] + constructorArray[i].hourlyCookiesArray[j++];
+      console.log(constructorArray[i].hourlyCookiesArray[j] + ': = hourly cookies array position to add');
+      console.log(constructorArray[i].hourlyCookiesArray[j++] + ': = hourly cookies array position to add');
       constructorArray[i].soldHourly.push(runningHourTotal);
-      console.log(runningHourTotal);
-      console.log(constructorArray[i].soldHourly[0] + ' = soldHourly');
+      console.log(runningHourTotal + ': = running total');
+      console.log(constructorArray[i].soldHourly[i] + ' = soldHourly');
     }
   }
   // this.soldHourly = runningHourTotal;
